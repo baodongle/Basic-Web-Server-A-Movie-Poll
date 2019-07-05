@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'moviepoll.apps.MoviepollConfig',
+    'IntekMovieFridayPoll.apps.IntekMovieFridayPollConfig',
 ]
 
 MIDDLEWARE = [
