@@ -1,0 +1,20 @@
+{% extends "IntekMovieFridayPoll/base.html" %}
+{% load static %}
+
+{% block title %}The Intek Movie Friday Night Poll{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'IntekMovieFridayPoll/style.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% if latest_question_list %}
+        <ul>
+            {% for question in latest_question_list %}
+                <li><a href="{% url 'IntekMovieFridayPoll:detail' question.id %}">{{ question.question_text }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+{% endblock %}
