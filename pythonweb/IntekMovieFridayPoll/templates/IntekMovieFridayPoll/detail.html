@@ -1,8 +1,7 @@
 {% extends "IntekMovieFridayPoll/base.html" %}
 
 {% block content %}
-
-    <h1>{{ question.question_text }}</h1>
+    <h1>{% block title %}{{ question.question_text }}{% endblock %}</h1>
     <ul>
         <h1>{{ question.question_text }}</h1>
 
@@ -17,5 +16,4 @@
             <input type="submit" value="Vote">
         </form>
     </ul>
-
 {% endblock content %}
