@@ -1,16 +1,62 @@
+{% load bootstrap4 %}
+
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}IntekMovieFridayPoll/style.css">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ STATIC_URL }}IntekMovieFridayPoll/images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ STATIC_URL }}IntekMovieFridayPoll/images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ STATIC_URL }}IntekMovieFridayPoll/images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ STATIC_URL }}IntekMovieFridayPoll/images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114"
+          href="{{ STATIC_URL }}IntekMovieFridayPoll/images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120"
+          href="{{ STATIC_URL }}IntekMovieFridayPoll/images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144"
+          href="{{ STATIC_URL }}IntekMovieFridayPoll/images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152"
+          href="{{ STATIC_URL }}IntekMovieFridayPoll/images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180"
+          href="{{ STATIC_URL }}IntekMovieFridayPoll/images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"
+          href="{{ STATIC_URL }}IntekMovieFridayPoll/images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+          href="{{ STATIC_URL }}IntekMovieFridayPoll/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96"
+          href="{{ STATIC_URL }}IntekMovieFridayPoll/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="{{ STATIC_URL }}IntekMovieFridayPoll/images/favicon-16x16.png">
+    <link rel="manifest" href="{{ STATIC_URL }}IntekMovieFridayPoll/images/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{ STATIC_URL }}IntekMovieFridayPoll/images/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- McLaren Font -->
+    <link href="https://fonts.googleapis.com/css?family=McLaren&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    {% bootstrap_css %}
+
+    <!-- My CSS -->
+    {% block css %}{% endblock %}
 </head>
 <body>
-<header>
-    <p><a href="{% url 'IntekMovieFridayPoll:index' %}">The Intek Movie Friday Night Poll</a></p>
+<header class="d-flex align-items-center">
+    <a href="{% url 'IntekMovieFridayPoll:index' %}"><img width="60" height="60"
+                                                          src="{{ STATIC_URL }}IntekMovieFridayPoll/logo.svg"
+                                                          alt=""></a>
+    <div>The Intek Movie Friday Night Poll</div>
 </header>
 
 <main>{% block content %}{% endblock %}</main>
+
+<!-- Bootstrap JS -->
+{% bootstrap_javascript jquery='full' %}
+
+{% block js %}{% endblock %}
 </body>
 </html>

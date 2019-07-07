@@ -2,14 +2,31 @@
 
 {% block title %}{{ question.question_text }} - Results{% endblock %}
 
-{% block content %}
-    <h1>{{ question.question_text }}</h1>
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}IntekMovieFridayPoll/results.css">
+{% endblock %}
 
-    <ul>
-        {% for choice in question.choice_set.all %}
-            <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-        {% endfor %}
-    </ul>
+{% block content %}
+    <h1 class="text-center">{{ question.question_text }}</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {% for choice in question.choice_set.all %}
+                    <div class="progress-outer font-weight-bold">
+                        <p>{{ choice.choice_text }}</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-info progress-bar-striped active"
+                                 style="width:{{ choice.ratio }}%; box-shadow:-1px 10px 10px rgba(91, 192, 222, 0.7);">
+                                {{ choice.votes }}
+                            </div>
+                            <div class="progress-value">{{ choice.ratio }}%</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
     <a href="{% url 'IntekMovieFridayPoll:detail' question.id %}">Vote again?</a>
 {% endblock content %}
