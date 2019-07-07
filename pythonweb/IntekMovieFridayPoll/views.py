@@ -54,6 +54,11 @@ def vote(request, question_id):
     else:
         selected_choice.votes += 1
         selected_choice.save()
+        question.votes += 1
+        question.save()
+        for choice in question.choice_set.all():
+            choice.ratio = round(choice.votes / question.votes * 100, 0)
+            choice.save()
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.

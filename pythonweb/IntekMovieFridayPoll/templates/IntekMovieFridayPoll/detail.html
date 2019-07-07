@@ -1,19 +1,27 @@
 {% extends "IntekMovieFridayPoll/base.html" %}
 
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}IntekMovieFridayPoll/detail.css">
+{% endblock %}
+
+
 {% block content %}
-    <h1>{% block title %}{{ question.question_text }}{% endblock %}</h1>
-    <ul>
-        <h1>{{ question.question_text }}</h1>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <form action="{% url 'IntekMovieFridayPoll:vote' question.id %}" method="post">
+        <fieldset>
+            <legend>{% block title %}{{ question.question_text }}{% endblock %}</legend>
 
-        <form action="{% url 'IntekMovieFridayPoll:vote' question.id %}" method="post">
             {% csrf_token %}
             {% for choice in question.choice_set.all %}
-                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                <label for="choice{{ forloop.counter }}">
+                    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                    <span>{{ choice.choice_text }}</span>
+                </label>
             {% endfor %}
-            <input type="submit" value="Vote">
-        </form>
-    </ul>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Vote</button>
+            </div>
+        </fieldset>
+    </form>
 {% endblock content %}
